@@ -12,9 +12,11 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     };
 
     // Fetch API Call (POST request)
-    fetch('https://dummyjson.com/auth/login', {
+    fetch('http://localhost:8080/api/v1/auth/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' ,
+                   'Access-Control-Allow-Origin': 'http://localhost:8080/api/v1/auth/login'
+        },
         body: JSON.stringify(payload)
     })
     .then(response => {
@@ -25,8 +27,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     })
     .then(data => {
         // Successful login
-        document.getElementById('login-message').innerText = `Login successful! Token: ${data.token}`;
-        console.log('User Token:', data.token);
+        document.getElementById('login-message').innerText = `Login successful!`;
     })
     .catch(error => {
         // Error handling

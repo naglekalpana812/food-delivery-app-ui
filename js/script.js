@@ -1,52 +1,94 @@
-// Dummy signup simulation
-function signUpUser(username, password) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(`User ${username} signed up successfully!`);
-    }, 1000);
-  });
-}
-
-// Dummy food list (you can replace it with fetch from real API)
-const dummyFoods = [
-  { id: 1, name: "Pizza", image: "https://source.unsplash.com/200x150/?pizza" },
-  { id: 2, name: "Burger", image: "https://source.unsplash.com/200x150/?burger" },
-  { id: 3, name: "Pasta", image: "https://source.unsplash.com/200x150/?pasta" },
-  { id: 4, name: "Sushi", image: "https://source.unsplash.com/200x150/?sushi" },
+// Simulated Dummy JSON API Response
+const dummyFoodData = [
+    {
+        "id": 1,
+        "name": "Margherita Pizza",
+        "desc": "Classic delight with fresh tomatoes and basil.",
+        "image": "https://source.unsplash.com/400x300/?margherita-pizza"
+    },
+    {
+        "id": 2,
+        "name": "Cheeseburger",
+        "desc": "Juicy grilled burger with cheese and veggies.",
+        "image": "https://source.unsplash.com/400x300/?cheeseburger"
+    },
+    {
+        "id": 3,
+        "name": "Veg Pasta",
+        "desc": "Italian pasta with fresh vegetables and herbs.",
+        "image": "https://source.unsplash.com/400x300/?vegetarian-pasta"
+    },
+    {
+        "id": 4,
+        "name": "Chicken Wings",
+        "desc": "Spicy and crispy chicken wings.",
+        "image": "https://source.unsplash.com/400x300/?chicken-wings"
+    }
 ];
 
-// Render food cards
-function loadFoodItems() {
-  const container = document.getElementById("foodContainer");
-  dummyFoods.forEach(food => {
-    const card = document.createElement("div");
-    card.className = "food-card";
-    card.innerHTML = `
-      <img src="${food.image}" alt="${food.name}" />
-      <h3>${food.name}</h3>
-      <button onclick="addToCart(${food.id})">Add to Cart</button>
-    `;
-    container.appendChild(card);
-  });
+// Function to simulate fetching food data (returns Promise)
+function fetchFoodItems() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(dummyFoodData);
+        }, 1000); // Simulate 1 second API delay
+    });
 }
 
-// Dummy Add to Cart
-function addToCart(id) {
-  const food = dummyFoods.find(item => item.id === id);
-  alert(`Added ${food.name} to cart!`);
+// Function to render food items dynamically
+function renderFoodItems(items) {
+    const container = document.getElementById('food-cards-container');
+    container.innerHTML = ''; // Clear existing content
+
+    items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        card.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p>${item.desc}</p>
+        `;
+
+        container.appendChild(card);
+    });
 }
 
-
-document.getElementById("signupForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const user = document.getElementById("newUsername").value;
-  const pass = document.getElementById("newPassword").value;
-  signUpUser(user, pass).then(msg => {
-    document.getElementById("signup-message").innerText = msg;
-  });
+// Fetch and render food items on page load
+document.addEventListener('DOMContentLoaded', () => {
+    fetchFoodItems()
+        .then(data => renderFoodItems(data))
+        .catch(err => console.error('Error fetching food data:', err));
 });
+function toggleForm(formId) {
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('registerForm').classList.add('hidden');
+    document.getElementById(formId).classList.remove('hidden');
+}
 
-// On load
-window.onload = () => {
-  loadFoodItems();
-};
+function dummyApiCall(data) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve({ status: "success", message: "Operation Successful", data });
+        }, 1000);
+    });
+}
+
+function handleLogin() {
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
+
+    dummyApiCall({ username, password })
+        .then(response => alert(`Login ${response.status}: ${response.message}`))
+        .catch(error => alert(`Error: ${error}`));
+}
+
+function handleRegister() {
+    const username = document.getElementById('registerUsername').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+
+    dummyApiCall({ username, email, password })
+        .then(response => alert(`Registration ${response.status}: ${response.message}`))
+        .catch(error => alert(`Error: ${error}`));
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login & Registration | FoodiesHub</title>
+    <link rel="stylesheet" href="css/login-regi-style.css">
+</head>
+<body>
+    <div class="dialog-container">
+        <div class="form-container" id="loginForm">
+            <h2>Login</h2>
+            <input type="text" id="loginUsername" placeholder="Username">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="handleLogin()">Login</button>
+            <p>Don't have an account? <span class="toggle" onclick="toggleForm('registerForm')">Register</span></p>
+        </div>
+
+        <div class="form-container hidden" id="registerForm">
+            <h2>Register</h2>
+            <input type="text" id="registerUsername" placeholder="Username">
+            <input type="email" id="registerEmail" placeholder="Email">
+            <input type="password" id="registerPassword" placeholder="Password">
+            <button onclick="handleRegister()">Register</button>
+            <p>Already have an account? <span class="toggle" onclick="toggleForm('loginForm')">Login</span></p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

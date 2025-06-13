@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(err => console.error('Error fetching food data:', err));
 });
 function toggleForm(formId) {
-    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('loginFormDiv').classList.add('hidden');
     document.getElementById('registerForm').classList.add('hidden');
     document.getElementById(formId).classList.remove('hidden');
 }

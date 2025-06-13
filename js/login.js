@@ -2,8 +2,8 @@
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent page reload
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
 
     // Prepare the request payload
     const payload = {

@@ -2,13 +2,15 @@
 document.getElementById('signupForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent page reload
 
-    const username = document.getElementById('newUsername').value;
-    const password = document.getElementById('newPassword').value;
-
+    const username = document.getElementById('registerUsername').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const email = document.getElementById('newEmail').value;
     // Prepare the request payload
     const payload = {
         username: username,
-        password: password
+        password: password,
+        email:    email
     };
 
     // Fetch API Call (POST request)

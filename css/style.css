@@ -11,6 +11,31 @@ body {
     color: #333;
 }
 
+#productList {
+  margin-top: 20px;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#cartList {
+  list-style: none;
+  padding: 0;
+}
+
+#cartList li {
+  margin: 5px 0;
+}
+
+
 /* Header */
 header {
     background-color: #ff6b6b;

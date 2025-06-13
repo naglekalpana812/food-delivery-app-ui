@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing with Cart</title>
+    <link rel="stylesheet" href="css/render-product-style.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Our Exclusive Products</h1>
+        <button id="checkout-btn">Checkout</button>
+        <span id="cart-count">Cart: 0</span>
+    </header>
+    <main>
+        <div id="product-list" class="product-grid"></div>
+    </main>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Checkout Summary</h2>
+            <ul id="cart-items"></ul>
+            <p id="total-price"></p>
+            <button id="pay-btn">Simulate Payment</button>
+            <button id="close-modal">Close</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/renderproduct.js"></script>
+</body>
+</html>

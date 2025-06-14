@@ -35,3 +35,9 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         document.getElementById('signup-message').innerText = error.message;
     });
 });
+
+function toggleForm(formId) {
+    document.getElementById('loginFormDiv').classList.add('hidden');
+    document.getElementById('registerForm').classList.add('hidden');
+    document.getElementById(formId).classList.remove('hidden');
+}

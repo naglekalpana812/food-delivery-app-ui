@@ -5,26 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foodie - Dynamic Food Menu</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js">
+    </script>
+    <script>sessionStorage.clear()</script>
 </head>
 <body>
-
-    <header>
-        <div class="logo">🍕 Foodie</div>
-        <nav>
-            <ul>
-                <li><a href="foodrender.html">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Cart</a></li>
-                <li><a href="dialog.html">Login</a></li>
-                <li><a href="#">Register</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    
+    <div id="header"></div>
+    
     <section class="hero">
         <h1>Delicious Food, Delivered Fast!</h1>
         <p>Choose from a wide variety of mouth-watering cuisines at your doorstep.</p>
-        <button onclick="alert('Explore Menu Coming Soon!')">Explore Menu</button>
+        <button onclick="checkLogin()">Explore Menu</button>
     </section>
 
     <section class="menu-preview">
@@ -33,10 +25,8 @@
             <!-- Dynamic cards will load here -->
         </div>
     </section>
-
-    <footer>
-        <p>&copy; 2025 Foodie. All rights reserved.</p>
-    </footer>
+    
+    <div id="footer"></div>
 
     <script src="js/script.js"></script>
     <script src="js/login.js"></script>

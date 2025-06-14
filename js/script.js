@@ -4,25 +4,25 @@ const dummyFoodData = [
         "id": 1,
         "name": "Margherita Pizza",
         "desc": "Classic delight with fresh tomatoes and basil.",
-        "image": "https://source.unsplash.com/400x300/?margherita-pizza"
+        "image": 'assets/mp.jpg'
     },
     {
         "id": 2,
         "name": "Cheeseburger",
         "desc": "Juicy grilled burger with cheese and veggies.",
-        "image": "https://source.unsplash.com/400x300/?cheeseburger"
+        "image": 'assets/McAloo.jpg'
     },
     {
         "id": 3,
         "name": "Veg Pasta",
         "desc": "Italian pasta with fresh vegetables and herbs.",
-        "image": "https://source.unsplash.com/400x300/?vegetarian-pasta"
+        "image": 'assets/vegpasta.jpg'
     },
     {
         "id": 4,
-        "name": "Chicken Wings",
-        "desc": "Spicy and crispy chicken wings.",
-        "image": "https://source.unsplash.com/400x300/?chicken-wings"
+        "name": "Veg Biryani",
+        "desc": "Authentic Indian Veg Biryani",
+        "image": 'assets/veg-biryani.jpg'
     }
 ];
 
@@ -60,11 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => renderFoodItems(data))
         .catch(err => console.error('Error fetching food data:', err));
 });
-function toggleForm(formId) {
-    document.getElementById('loginFormDiv').classList.add('hidden');
-    document.getElementById('registerForm').classList.add('hidden');
-    document.getElementById(formId).classList.remove('hidden');
-}
+
 
 function dummyApiCall(data) {
     return new Promise((resolve, reject) => {
@@ -72,6 +68,18 @@ function dummyApiCall(data) {
             resolve({ status: "success", message: "Operation Successful", data });
         }, 1000);
     });
+}
+
+// Check if user session exists
+function checkLogin() {
+    
+    const user = sessionStorage.getItem('user');
+    console.log("user "+user)
+    if(user == null) {
+        window.location.href = 'dialog.html'; // redirect if not logged in
+    }else {
+        window.location.href = 'foodrender.html';
+    }
 }
 
 function handleLogin() {
@@ -92,3 +100,14 @@ function handleRegister() {
         .then(response => alert(`Registration ${response.status}: ${response.message}`))
         .catch(error => alert(`Error: ${error}`));
 }
+
+// Logout and clear session
+function logoutUser() {
+    sessionStorage.removeItem('user');
+    window.location.href = 'home.html';
+}
+
+$(function(){
+  $("#header").load("header.html"); 
+  $("#footer").load("footer.html"); 
+});

@@ -20,17 +20,25 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         body: JSON.stringify(payload)
     })
     .then(response => {
-        if (!response.ok) {  // If HTTP response not OK
+        if (!response.ok) { 
             throw new Error('Invalid username or password');
         }
         return response.json();
     })
     .then(data => {
         // Successful login
+        sessionStorage.setItem('user', username);
         document.getElementById('login-message').innerText = `Login successful!`;
+        window.location.href = 'foodrender.html';
     })
     .catch(error => {
         // Error handling
         document.getElementById('login-message').innerText = error.message;
     });
 });
+
+function toggleForm(formId) {
+    document.getElementById('loginFormDiv').classList.add('hidden');
+    document.getElementById('registerForm').classList.add('hidden');
+    document.getElementById(formId).classList.remove('hidden');
+}
